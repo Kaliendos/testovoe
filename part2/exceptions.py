@@ -1,0 +1,2 @@
+class PrizeNotFoundError(BaseException):
+    pass
