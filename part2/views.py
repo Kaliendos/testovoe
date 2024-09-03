@@ -8,8 +8,11 @@ from .models import PlayerLevel, PlayerPrizeLevel
 
 def set_prize(request):
     """Проверка метода присвоения приза"""
-    playerlevel = PlayerLevel.objects.get(player=3)
-    playerlevel.set_prize()
+    try:
+        player_level = PlayerLevel.objects.get(player=1)
+        player_level.set_prize()
+    except PlayerLevel.DoesNotExist:
+        return HttpResponse("Нет тестовых даннх или игрока с таким id не существует.")
     return HttpResponse()
 
 
